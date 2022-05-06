@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
+import ThunkMiddleware from 'redux-thunk';
 import './assets/css/index.css';
 import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
@@ -11,7 +12,7 @@ import { searchRobots } from './reducers';
 
 
 const logger = createLogger();
-const store = createStore(searchRobots, applyMiddleware(logger));
+const store = createStore(searchRobots, applyMiddleware(ThunkMiddleware, logger));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
