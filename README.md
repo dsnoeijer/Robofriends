@@ -1,8 +1,9 @@
-# ZtM - Robodex Project
+# ZtM - Robofriends Project
 
 ### `Robodex`
 
 A simple starter project build during the Complete Web Developer (2021): Zero to Mastery Course.
+Build with React v18
 
 ## Available Scripts
 
