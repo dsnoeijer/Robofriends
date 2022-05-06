@@ -2,7 +2,8 @@ import {
     CHANGE_SEARCH_FIELD,
     REQUEST_ROBOTS_PENDING,
     REQUEST_ROBOTS_SUCCESS,
-    REQUEST_ROBOTS_FAILED
+    REQUEST_ROBOTS_FAILED,
+    UPDATE_ROBOT
 } from "./constants";
 
 export const setSearchField = (text) => ({
@@ -23,3 +24,8 @@ export const requestRobots = () => (dispatch) => {
             payload: err
         }))
 }
+
+export const updateRobot = (text) => ({
+    type: UPDATE_ROBOT,
+    payload: text
+})

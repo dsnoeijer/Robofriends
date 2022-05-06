@@ -4,7 +4,7 @@ import SearchBox from "../components/SearchBox";
 import Scroll from '../components/Scroll';
 import ErrorBoundry from "../components/ErrorBoundary";
 import { connect } from "react-redux";
-import { requestRobots, setSearchField } from "../actions";
+import { requestRobots, setSearchField, updateRobot } from "../actions";
 import '../assets/css/App.css';
 
 const mapStateToProps = state => {
@@ -18,7 +18,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
-        onRequestRobots: () => dispatch(requestRobots())
+        onRequestRobots: () => dispatch(requestRobots()),
+        onUpdateRobot: (event) => dispatch(updateRobot(event))
     }
 };
 
@@ -31,26 +32,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        // console.log(this.props.store.getState())
         this.props.onRequestRobots();
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.userbot !== this.state.userbot) {
-            this.setState({ robots: this.state.userbot })
-        }
-    }
-
-    addRobot = () => {
-        const addRobot = document.getElementById("addbot").value;
-        this.setState({
-            userbot:
-                [{
-                    name: addRobot,
-                    email: '',
-                    id: addRobot
-                }]
-        })
     }
 
     resetRobots = () => {
@@ -62,7 +44,7 @@ class App extends Component {
     }
 
     render() {
-        const { searchField, onSearchChange, robots, isPending } = this.props;
+        const { searchField, onSearchChange, robots, isPending, onUpdateRobot } = this.props;
         const filteredRobots = robots.filter(robot => {
             return robot.name.toLowerCase().includes(searchField.toLowerCase());
         })
@@ -81,10 +63,10 @@ class App extends Component {
                 <Scroll>
                     <ErrorBoundry>
                         <div className="ma2 white">
-                            <h3>Enter your name to find your Robot Alter-Ego...</h3>
+                            {/* <h3>Enter your name to find your Robot Alter-Ego...</h3>
                             <input id="addbot" type="text" />
-                            <button onClick={this.addRobot}>Check</button>
-                            <button onClick={this.resetRobots}>Reset</button>
+                            <button onClick={() => onUpdateRobot(document.getElementById('addbot').value)}>Check</button>
+                            <button onClick={this.resetRobots}>Reset</button> */}
                         </div>
                         <CardList robots={filteredRobots} />
                     </ErrorBoundry>

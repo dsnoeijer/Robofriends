@@ -8,11 +8,11 @@ import './assets/css/index.css';
 import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons';
-import { searchRobots, requestRobots } from './reducers';
+import { searchRobots, requestRobots, updateRobot } from './reducers';
 
 
 const logger = createLogger();
-const rootReducer = combineReducers({ searchRobots, requestRobots });
+const rootReducer = combineReducers({ searchRobots, requestRobots, updateRobot });
 const store = createStore(rootReducer, applyMiddleware(ThunkMiddleware, logger));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
