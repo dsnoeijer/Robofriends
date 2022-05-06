@@ -10,3 +10,31 @@ h1 {
     font-weight: 200;
     color: #0ccac4;
 }
+
+#wrap {
+    display: flex;
+    align-items: center;
+}
+
+#wrap h1 {
+    width: 20%;
+}
+
+#wrap>div {
+    width: 60%;
+}
+
+@media screen and (max-width: 600px) {
+    #wrap {
+        display: block;
+        text-align: center;
+    }
+
+    #wrap h1 {
+        width: 100%;
+    }
+
+    #wrap>div {
+        width: 100%;
+    }
+}

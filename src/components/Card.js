@@ -8,7 +8,7 @@ const Card = ({ name, email, id }) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    let img = `https://robohash.org/${id}?200x200`;
+    let img = `https://robohash.org/${id}`;
 
     return (
         <div className='tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5'>
